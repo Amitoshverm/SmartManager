@@ -1,0 +1,24 @@
+{
+  "name": "smartmanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amitoshverm/SmartManager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amitoshverm/SmartManager/issues"
+  },
+  "homepage": "https://github.com/Amitoshverm/SmartManager#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  }
+}

@@ -10,8 +10,8 @@ public class PageController {
     @RequestMapping("/home")
     public String home(Model model) {
         System.out.println("printed hello");
-        // model.addAttribute("name", "Amitosh");
-        // model.addAttribute("gitHub", "https://github.com/Amitoshverm/HowReactworks");
+        model.addAttribute("name", "Amitosh");
+        model.addAttribute("gitHub", "https://github.com/Amitoshverm/HowReactworks");
         return "home";
     }
 }
