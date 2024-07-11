@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>this is about</h1>
+    <!-- using fargment -->
+    <div class="host-tag" th:insert="${login} ? ~{base :: parent(~{::section})}: ~{base :: test}"></div>
+    <section>
+        <h2>this is dynamic content</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit voluptatibus iure saepe omnis distinctio earum velit, pariatur officiis similique illo cumque explicabo nemo a facilis debitis dolores aspernatur libero modi!</p>
+    </section>
+</body>
+</html>

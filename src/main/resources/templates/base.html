@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+   <div class="parent-fragment" th:fragment="parent(content)">
+    <h1>this if fragment</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, esse!</p>
+    <div th:replace="${content}"></div>
+   </div>
+
+   <div th:fragment="test">
+    <h1>this is test user</h1>
+   </div>
+   
+</body>
+</html>
+
+<!-- we use this when we have to pass html tag "~{:: <html-tag>}" 
+    we can use selectors like class and id too "~{:: #<id_name>} & "~{:: .<class_name>}-->

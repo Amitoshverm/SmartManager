@@ -14,4 +14,19 @@ public class PageController {
         model.addAttribute("gitHub", "https://github.com/Amitoshverm/HowReactworks");
         return "home";
     }
+
+    // about route
+    @RequestMapping("/about")
+    public String aboutPage(Model model) {
+        model.addAttribute("login", false);
+        System.out.println("About page loading");
+        return "about";
+    }
+
+    // services
+    @RequestMapping("/services")
+    public String servicesPage() {
+        System.out.println("Services page loading");
+        return "services";
+    }
 }

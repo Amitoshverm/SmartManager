@@ -583,6 +583,10 @@ video {
   display: inline-flex;
 }
 
+.contents {
+  display: contents;
+}
+
 .h-3 {
   height: 0.75rem;
 }
