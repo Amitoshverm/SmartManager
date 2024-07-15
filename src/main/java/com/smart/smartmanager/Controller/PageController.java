@@ -2,6 +2,7 @@ package com.smart.smartmanager.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -28,5 +29,18 @@ public class PageController {
     public String servicesPage() {
         System.out.println("Services page loading");
         return "services";
+    }
+     @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+     @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
+    // Contact Page
+     @GetMapping("/contact")
+    public String contact() {
+        return "contact";
     }
 }

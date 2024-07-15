@@ -1,25 +1,41 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" 
+class="light"
+th:fragment="parent(content,title)"
+xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+<link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"  rel="stylesheet" />
+
+<!-- font awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title data-th-replace="${title}">base page</title>
 </head>
-<body>
-    
-   <div class="parent-fragment" th:fragment="parent(content)">
-    <h1>this if fragment</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, esse!</p>
-    <div th:replace="${content}"></div>
-   </div>
+<body class= "dark:bg-gray-900 dark:text-white">
+    <!-- common header -->
+    <div data-th-replace="navbar :: navbar">
 
-   <div th:fragment="test">
-    <h1>this is test user</h1>
-   </div>
-   
+    </div>
+    
+    <!-- main page content -->
+    <div class="p-4">
+    <section  data-th-replace="${content}">
+    </section>
+    </div>
+
+    <!-- <div data-th-replace="${div}"> -->
+
+    <!-- </div> -->
+
+    <!-- common footer -->
+    <!-- <footer class="p-4">this is common footer</footer> -->
+<!-- flowbite content -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <script data-th-src="@{'/js/script.js'}">
+
+    </script>
+
 </body>
 </html>
-
-<!-- we use this when we have to pass html tag "~{:: <html-tag>}" 
-    we can use selectors like class and id too "~{:: #<id_name>} & "~{:: .<class_name>}-->

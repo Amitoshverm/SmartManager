@@ -1,22 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title})}"> 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Services Page</title>
 </head>
 <body>
-    <h1>This is Service Page</h1>
-    <div th:replace="~{base :: parent(~{::.second})}">
-        <section>
-            <h1>this is dynamic service passed to base class</h1>
-        </section>
-        <section id="second">
-            <h1>this is passed by id</h1> 
-        </section>
-        <section class="second">
-            <h1>this is passed by class</h1> 
-        </section>
+    <section id="content">
+        <h1>Services offered by scm</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, perspiciatis?</p>
+    </section>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
 </body>
 </html>
