@@ -1,12 +1,30 @@
 package com.smart.smartmanager.Controller;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.smart.smartmanager.Entity.User;
+import com.smart.smartmanager.Services.UserService;
+import com.smart.smartmanager.helper.Message;
+import com.smart.smartmanager.helper.MessageType;
+import com.smart.smartmanager.helper.UserForm;
+
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class PageController {
+
+    private UserService userService;
+
+    public PageController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping("/home")
     public String home(Model model) {
@@ -35,12 +53,52 @@ public class PageController {
         return "login";
     }
      @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
+        UserForm userForm = new UserForm();
+        model.addAttribute("userForm", userForm);
         return "register";
     }
     // Contact Page
      @GetMapping("/contact")
     public String contact() {
         return "contact";
+    }
+
+    //processing register 
+    @RequestMapping(value="/do-register", method=RequestMethod.POST)
+    public String processRegister(@ModelAttribute UserForm userForm, HttpSession session) {
+        System.out.println("Registration in process");
+        System.out.println(userForm);
+
+        // User user = User.builder()
+        // .name(userForm.getName())
+        // .email(userForm.getEmail())
+        // .password(userForm.getPassword())
+        // .phoneNumber(userForm.getPhoneNumber())
+        // .about(userForm.getAbout())
+        // .build();
+
+        User user = new User();
+        user.setName(userForm.getName());
+        user.setEmail(userForm.getEmail());
+        user.setPassword(userForm.getPassword());
+        user.setAbout(userForm.getAbout());
+        user.setPhoneNumber(userForm.getPhoneNumber());
+        user.setProfilePicture("");
+        User saved = userService.saveUser(user);
+
+        System.out.println("save user ");
+        // fetch the form data 
+        // and validate form data 
+        // save to db
+        // message = registration sucessfull
+        //add message
+        Message message = Message.builder()
+        .content("Registration Successfull")
+        .type(MessageType.blue)
+        .build();
+
+        session.setAttribute("message", message);
+        return "redirect:/register";
     }
 }
