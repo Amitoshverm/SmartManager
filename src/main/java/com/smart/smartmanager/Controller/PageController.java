@@ -3,6 +3,7 @@ package com.smart.smartmanager.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import com.smart.smartmanager.helper.MessageType;
 import com.smart.smartmanager.helper.UserForm;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -66,10 +68,13 @@ public class PageController {
 
     //processing register 
     @RequestMapping(value="/do-register", method=RequestMethod.POST)
-    public String processRegister(@ModelAttribute UserForm userForm, HttpSession session) {
+    public String processRegister(@Valid @ModelAttribute UserForm userForm, BindingResult bindingResult, HttpSession session) {
         System.out.println("Registration in process");
         System.out.println(userForm);
 
+        if (bindingResult.hasErrors()) {
+            return "register";
+        }
         // User user = User.builder()
         // .name(userForm.getName())
         // .email(userForm.getEmail())
