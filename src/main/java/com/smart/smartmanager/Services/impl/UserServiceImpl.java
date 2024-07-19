@@ -4,26 +4,36 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.smart.smartmanager.Entity.User;
 import com.smart.smartmanager.Exceptions.ResourceNotFoundException;
 import com.smart.smartmanager.Repositories.UserRepository;
 import com.smart.smartmanager.Services.UserService;
+import com.smart.smartmanager.helper.AppConstants;
 
 @Service
 public class UserServiceImpl implements UserService{
 
     private UserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
     
     @Override
     public User saveUser(User user) {
         String userId = UUID.randomUUID().toString();
         user.setUserId(userId);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // set role
+
+        user.setRolesList(List.of(AppConstants.ROLE_USER));
+
         return userRepository.save(user);
     }
 
