@@ -1,3 +1,11 @@
+## Preview
+<img width="1440" alt="Screenshot 2024-07-19 at 12 27 37 PM" src="https://github.com/user-attachments/assets/b0771c8d-82f0-4911-b829-af2ef30b365c">
+<img width="1440" alt="Screenshot 2024-07-19 at 12 26 44 PM" src="https://github.com/user-attachments/assets/aebb3c0d-56e5-410e-bb1b-2414846abb57">
+<img width="1440" alt="Screenshot 2024-07-19 at 12 26 18 PM" src="https://github.com/user-attachments/assets/747f075a-ec17-42b7-9b30-3eeeeb997adc">
+
+
+
+
  
  ## How to add tailwindcss and flowbite
  
@@ -15,5 +23,6 @@
  <img width="627" alt="Screenshot 2024-07-12 at 12 08 14 AM" src="https://github.com/Amitoshverm/SmartManager/assets/92478894/4375b9f7-5754-4e1e-858b-1053f180f229">
  <img width="561" alt="Screenshot 2024-07-12 at 12 14 03 AM" src="https://github.com/Amitoshverm/SmartManager/assets/92478894/48e4bdaf-f676-43e4-bc1e-ba406a148bcd">
 
+<img width="1440" alt="Screenshot 2024-07-19 at 12 25 52 PM" src="https://github.com/user-attachments/assets/0961a117-b54c-4df7-a892-65a90f981652">
 
     
