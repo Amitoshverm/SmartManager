@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -62,17 +63,25 @@ public class SecurityConfig {
             authorize.requestMatchers("/user/**").authenticated();
             authorize.anyRequest().permitAll();
         });
+        
         httpSecurity.formLogin(formLogin -> {
             formLogin.loginPage("/login");
             // now default login page is replaced by our custom login page
             // and this login will process at 
-            formLogin.loginProcessingUrl("authenticate");
+            formLogin.loginProcessingUrl("/authenticate");
             // this will be forwarded to ->
             formLogin.successForwardUrl("/user/dashboard");
             // or if thrown error 
             // formLogin.failureForwardUrl("login?error=true");
             formLogin.usernameParameter("email");
             formLogin.passwordParameter("password");
+        });
+
+
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
+        httpSecurity.logout(logoutForm -> {
+            logoutForm.logoutUrl("/do-logout");
+            logoutForm.logoutSuccessUrl("/login?logout=true");
         });
         return httpSecurity.build();
     }
@@ -82,4 +91,5 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
 
     }
+
 }

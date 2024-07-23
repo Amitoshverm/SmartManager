@@ -39,7 +39,7 @@ public class PageController {
     // about route
     @RequestMapping("/about")
     public String aboutPage(Model model) {
-        model.addAttribute("login", false);
+        model.addAttribute("isLogin", true);
         System.out.println("About page loading");
         return "about";
     }
@@ -52,7 +52,7 @@ public class PageController {
     }
      @GetMapping("/login")
     public String login() {
-        return "login";
+        return new String("login");
     }
      @GetMapping("/register")
     public String register(Model model) {
