@@ -26,3 +26,12 @@
 <img width="1440" alt="Screenshot 2024-07-19 at 12 25 52 PM" src="https://github.com/user-attachments/assets/0961a117-b54c-4df7-a892-65a90f981652">
 
     
+## Login in w/ google
+1. add OAuth2 dependency 
+2. google -> client id : 825207009584-5debiduh9l74umi0g1cpg898n9240ei2.apps.googleusercontent.com
+ and 
+ client seceret : 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
+3. add oauth login configuration
+4. login page / login and successhandler
+5. 
+

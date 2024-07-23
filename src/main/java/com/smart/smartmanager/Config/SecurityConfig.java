@@ -1,15 +1,25 @@
 package com.smart.smartmanager.Config;
 
+
+import java.io.IOException;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import com.smart.smartmanager.Services.SecurityCustomUserDetailService;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 
 @Configuration
@@ -32,12 +42,13 @@ public class SecurityConfig {
     //     var inMemoryUserDetailsManager =  new InMemoryUserDetailsManager(user);
     //     return inMemoryUserDetailsManager;
     // }
-
+    private OAuthAuthenticationSuccessHandler oAuthAuthenticationSuccessHandler;
     
     private SecurityCustomUserDetailService customUserDetailService;
 
-    public SecurityConfig(SecurityCustomUserDetailService customUserDetailService) {
+    public SecurityConfig(SecurityCustomUserDetailService customUserDetailService, OAuthAuthenticationSuccessHandler oAuthAuthenticationSuccessHandler) {
         this.customUserDetailService = customUserDetailService;
+        this.oAuthAuthenticationSuccessHandler = oAuthAuthenticationSuccessHandler;
     }
 
     
@@ -63,7 +74,7 @@ public class SecurityConfig {
             authorize.requestMatchers("/user/**").authenticated();
             authorize.anyRequest().permitAll();
         });
-        
+
         httpSecurity.formLogin(formLogin -> {
             formLogin.loginPage("/login");
             // now default login page is replaced by our custom login page
@@ -83,6 +94,17 @@ public class SecurityConfig {
             logoutForm.logoutUrl("/do-logout");
             logoutForm.logoutSuccessUrl("/login?logout=true");
         });
+
+
+        // oauth configurations
+        httpSecurity.oauth2Login((OAuth2LoginConfigurer<HttpSecurity> oauth) -> {
+            oauth.loginPage("/login");
+            oauth.successHandler(oAuthAuthenticationSuccessHandler);
+
+        });
+
+        
+
         return httpSecurity.build();
     }
 
