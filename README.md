@@ -23,7 +23,7 @@
  <img width="627" alt="Screenshot 2024-07-12 at 12 08 14 AM" src="https://github.com/Amitoshverm/SmartManager/assets/92478894/4375b9f7-5754-4e1e-858b-1053f180f229">
  <img width="561" alt="Screenshot 2024-07-12 at 12 14 03 AM" src="https://github.com/Amitoshverm/SmartManager/assets/92478894/48e4bdaf-f676-43e4-bc1e-ba406a148bcd">
 
-![alt text](<Screenshot 2024-07-19 at 12.25.52 PM.png>)
+<img width="1436" alt="Screenshot 2024-07-24 at 2 03 56 AM" src="https://github.com/user-attachments/assets/c4dcb6fd-55e9-488c-8c06-ed9779336f7a">
 
     
 ## Login in w/ google
