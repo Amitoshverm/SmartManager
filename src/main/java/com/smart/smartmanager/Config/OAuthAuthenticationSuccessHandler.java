@@ -72,8 +72,7 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
             userRepository.save(user1);
             logger.info("user saved !");
         }
-
-
+        // new DefaultRedirectStrategy().sendRedirect(request, response, "/user/profile");
     }    
 
 
