@@ -28,7 +28,9 @@
     
 ## Login in w/ google
 1. add OAuth2 dependency 
-2. google 
+2. google -> clientid
+ and 
+ clientsecerets
 3. add oauth login configuration
 4. login page / login and successhandler
 5. 
