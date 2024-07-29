@@ -50,10 +50,14 @@ public class PageController {
         System.out.println("Services page loading");
         return "services";
     }
+
+    //login page 
      @GetMapping("/login")
     public String login() {
         return new String("login");
     }
+
+    //registration page
      @GetMapping("/register")
     public String register(Model model) {
         UserForm userForm = new UserForm();

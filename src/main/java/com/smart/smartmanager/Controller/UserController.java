@@ -1,7 +1,10 @@
 package com.smart.smartmanager.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.smart.smartmanager.Services.UserService;
@@ -13,9 +16,16 @@ import com.smart.smartmanager.Services.UserService;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
+
     private UserService userService;
 
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+
+
+    Logger logger = LoggerFactory.getLogger(UserController.class);
     // user dashborad page
     @RequestMapping( value ="/dashboard")
     public String userDashboard() {
@@ -24,8 +34,8 @@ public class UserController {
     }
     //profile page
     @RequestMapping(value = "/profile")
-    public String userProfile() {
-        System.out.println("loading profile");
+    public String userProfile(Model model, Authentication authentication) {
+        
         return "user/profile";
     }
 
