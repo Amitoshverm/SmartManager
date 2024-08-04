@@ -28,7 +28,7 @@ public class Contacts {
     private String profilePic;
     private String description;
     private boolean favroite=false;
-    private String linkedLinks;
+    private String linkedIn;
     // private List<String> socialLinks = new ArrayList<>();
 
     @ManyToOne
