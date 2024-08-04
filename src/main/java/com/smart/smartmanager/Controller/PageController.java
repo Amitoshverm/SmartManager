@@ -1,6 +1,4 @@
 package com.smart.smartmanager.Controller;
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -111,3 +109,4 @@ public class PageController {
         return "redirect:/register";
     }
 }
+//this controller is to view html pages
