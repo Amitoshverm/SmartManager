@@ -4,15 +4,16 @@ class="light"
 th:fragment="parent(content,title)"
 xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-th-replace="${title}">base page</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-th-replace="${title}">SCM</title>
 
-<link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"  rel="stylesheet" />
-<link rel="stylesheet" data-th-href="@{'/css/output.css'}">
-<link rel="stylesheet" data-th-href="@{'/css/style.css'}">
-
-
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+    <link rel="stylesheet" data-th-href="@{'/css/style.css'}" />
 <!-- font awesome -->
 <link
       rel="stylesheet"
@@ -27,7 +28,7 @@ xmlns:th="http://www.thymeleaf.org">
 
     <!-- if user is logged In then this is our nav bar -->
     <div data-th-if="${loggedInUser}">
-        <div data-th-replace="user/user_navbar::user-navbar"></div>
+        <div data-th-replace="~{user/user_navbar::user-navbar}"></div>
     </div>
 
     <!-- sidebar when logged in  -->
@@ -38,7 +39,7 @@ xmlns:th="http://www.thymeleaf.org">
 
     <!-- if user is not logged in then vice versa -->
     <div th:unless="${loggedInUser}">
-        <div data-th-replace="navbar::navbar"></div>
+        <div data-th-replace="~{navbar :: navbar}"></div>
     </div>
 
     
