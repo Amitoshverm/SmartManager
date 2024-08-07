@@ -63,7 +63,7 @@ public class User implements UserDetails{
     private Providers provider = Providers.SELF;
     private String providerUserId;
     @OneToMany(mappedBy="user", cascade= CascadeType.ALL,fetch=FetchType.LAZY, orphanRemoval=true)
-    private List<Contacts> contacts = new ArrayList<>();
+    private List<Contact> contacts = new ArrayList<>();
 
     @ElementCollection(fetch=FetchType.EAGER)
     private List<String> rolesList = new ArrayList<>();

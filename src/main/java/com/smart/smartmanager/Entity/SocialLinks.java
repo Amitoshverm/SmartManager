@@ -1,7 +1,5 @@
 package com.smart.smartmanager.Entity;
 
-import org.springframework.boot.autoconfigure.web.WebProperties;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +21,6 @@ public class SocialLinks {
     private String title;
 
     @ManyToOne()
-    private Contacts contact;
+    private Contact contact;
 
 }

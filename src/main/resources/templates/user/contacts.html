@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title})}">
+<head>
+    <title >
+        Contacts Page
+    </title>
+</head>
+<body>
+
+    <div id="content">
+        <!-- sidebar -->
+        <div data-th-if="${loggedInUser}">
+        <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+    </div>
+
+
+        <div  class="sm:pl-64 pt-20" >
+            <h1 class="text-5xl">All your contacts</h1>
+            <p></p>
+
+            <div class="contacts_container">
+
+
+<div class="relative p-5 overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
+        
+        <label for="table-search" class="sr-only">Search</label>
+        <div class="relative">
+            <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
+            </div>
+            <input type="text" id="table-search-users" class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for users">
+        </div>
+    </div>
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                
+                <th scope="col" class="px-6 py-3">
+                    Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Phone
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Links
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  
+            data-th-object="${c}"
+            data-th-each="c : ${contacts}"
+            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                
+                <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                    
+                    <div class="ps-3">
+                        <div data-th-text="*{name}" class="text-base font-semibold">Neil Sims</div>
+                        <div data-th-text="*{email}" class="font-normal text-gray-500">neil.sims@flowbite.com</div>
+                    </div>  
+                </th>
+                <td  class="px-6 py-4" >
+                    <i class="fa-solid fa-phone w-4 h-4"></i>
+                    <span data-th-text="*{phoneNumber}"></span>
+                </td>
+                <td class="px-6 py-4">
+                    <a data-th-href="*{linkedIn}"><i class="fa-solid fa-link"></i></a>
+                </td>
+                <td class="px-6 py-4">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit Contact</a>
+                </td>
+            </tr>
+
+            
+        </tbody>
+    </table>
+</div>
+
+            </div>
+
+        </div>    
+    </div>
+</body>
+</html>

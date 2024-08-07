@@ -13,6 +13,8 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.smart.smartmanager.Services.SecurityCustomUserDetailService;
 
+
+// Our user detail service which manages user details 
 @Configuration
 public class SecurityConfig {
 
@@ -46,11 +48,10 @@ public class SecurityConfig {
 
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        // user detail service ka object:
+        // user detail services object:
         daoAuthenticationProvider.setUserDetailsService(customUserDetailService);
-        // password encoder ka object
+        // password encoders object
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-
         return daoAuthenticationProvider;
     }
 
@@ -72,7 +73,7 @@ public class SecurityConfig {
             // and this login will process at 
             formLogin.loginProcessingUrl("/authenticate");
             // this will be forwarded to ->
-            formLogin.successForwardUrl("/user/dashboard");
+            formLogin.successForwardUrl("/user/profile");
             // or if thrown error 
             // formLogin.failureForwardUrl("login?error=true");
             formLogin.usernameParameter("email");
@@ -81,6 +82,8 @@ public class SecurityConfig {
 
 
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
+        
+        
         httpSecurity.logout(logoutForm -> {
             logoutForm.logoutUrl("/do-logout");
             logoutForm.logoutSuccessUrl("/login?logout=true");
@@ -100,7 +103,6 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-
     }
 
 }
