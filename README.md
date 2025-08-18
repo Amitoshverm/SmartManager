@@ -33,5 +33,4 @@
  clientsecerets
 3. add oauth login configuration
 4. login page / login and successhandler
-5. 
 
